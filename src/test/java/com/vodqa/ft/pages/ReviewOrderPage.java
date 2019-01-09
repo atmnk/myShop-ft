@@ -70,8 +70,4 @@ public class ReviewOrderPage extends BasePage<ReviewOrderPage.ReviewOrderPageVal
             assertThat(reviewOrderPageMap.getTotalPrice().getText(),is(price));
         }
     }
-    @FunctionalInterface
-    public interface ValidationStrategy {
-        public void validate(ReviewOrderPageValidator validator,String price,String country);
-    }
 }

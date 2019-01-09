@@ -3,12 +3,9 @@ package com.vodqa.ft.facade;
 import com.vodqa.ft.model.ShippingInfo;
 import com.vodqa.ft.pages.*;
 import com.vodqa.ft.pages.factory.PageFactory;
-import com.vodqa.ft.strategy.OtherValidationStrategy;
+import com.vodqa.ft.strategy.CalulationService;
 import org.openqa.selenium.WebDriver;
-
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class PurchaseFacade {
     WebDriver driver;
@@ -17,17 +14,14 @@ public class PurchaseFacade {
     ReviewOrderPage reviewOrderPage;
     ShippingInfoPage  shippingInfoPage;
     SignInPage signInPage;
-    List<ReviewOrderPage.ValidationStrategy> validationStrategies=new ArrayList<>();
 
-    public PurchaseFacade(WebDriver driver, ReviewOrderPage.ValidationStrategy validationStrategy) {
+    public PurchaseFacade(WebDriver driver) {
         this.driver = driver;
         productsPage=PageFactory.resolve(driver,ProductsPage.class);
         productPage=PageFactory.resolve(driver,ProductPage.class);
         reviewOrderPage=PageFactory.resolve(driver,ReviewOrderPage.class);
         shippingInfoPage=PageFactory.resolve(driver,ShippingInfoPage.class);
         signInPage=PageFactory.resolve(driver,SignInPage.class);
-        this.validationStrategies.add(new OtherValidationStrategy());
-        this.validationStrategies.add(validationStrategy);
     }
 
     public void purchaseItem(int item,String size,String color,String price, ShippingInfo shippingInfo){
@@ -42,10 +36,15 @@ public class PurchaseFacade {
                 productPage.buy();
                 signInPage.continueAsGuest();
                 shippingInfoPage.setShippingAndContinue(shippingInfo);
+                reviewOrderPage.validate.ItemPrice(String.format("%.2f",Double.parseDouble(price)));
+                reviewOrderPage.validate.GiftPackingPrice(String.format("%.2f", CalulationService.calculateGift(Double.parseDouble(price))));
+                reviewOrderPage.validate.ShippingPrice(String.format("%.2f", CalulationService.calculateShipping(Double.parseDouble(price))));
+                if(shippingInfo.getCountry().equals("India")){
+                    reviewOrderPage.validate.TaxPrice(String.format("%.2f", CalulationService.calculateVatTax(Double.parseDouble(price),shippingInfo.getCountry())));
+                } else{
+                    reviewOrderPage.validate.TaxPrice(String.format("%.2f", CalulationService.calculateSalesTax(Double.parseDouble(price),shippingInfo.getCountry())));
+                }
 
-        for (ReviewOrderPage.ValidationStrategy strategy:validationStrategies) {
-            strategy.validate(reviewOrderPage.validate, price, shippingInfo.getCountry());
-        }
         reviewOrderPage.placeOrder();
     }
 }
