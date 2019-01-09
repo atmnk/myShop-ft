@@ -2,7 +2,6 @@ package com.vodqa.ft.tests;
 
 import com.vodqa.ft.model.ShippingInfo;
 import com.vodqa.ft.pages.*;
-import com.vodqa.ft.pages.factory.PageFactory;
 import com.vodqa.ft.strategy.CalulationService;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -24,11 +23,11 @@ public class PurchaseTest {
         String color="Green";
         String price="5400";
 
-        ProductsPage productsPage= PageFactory.resolve(driver, ProductsPage.class);
-        ProductPage productPage=PageFactory.resolve(driver, ProductPage.class);
-        ReviewOrderPage reviewOrderPage=PageFactory.resolve(driver, ReviewOrderPage.class);
-        ShippingInfoPage shippingInfoPage=PageFactory.resolve(driver, ShippingInfoPage.class);
-        SignInPage signInPage=PageFactory.resolve(driver, SignInPage.class);
+        ProductsPage productsPage= new ProductsPage(driver);
+        ProductPage productPage=new ProductPage(driver);
+        ReviewOrderPage reviewOrderPage=new ReviewOrderPage(driver);
+        ShippingInfoPage shippingInfoPage=new ShippingInfoPage(driver);
+        SignInPage signInPage=new SignInPage(driver);
         productsPage
                 .navigate();
 
@@ -63,11 +62,11 @@ public class PurchaseTest {
         String color="Blue";
         String price="9600";
 
-        ProductsPage productsPage= PageFactory.resolve(driver, ProductsPage.class);
-        ProductPage productPage=PageFactory.resolve(driver, ProductPage.class);
-        ReviewOrderPage reviewOrderPage=PageFactory.resolve(driver, ReviewOrderPage.class);
-        ShippingInfoPage shippingInfoPage=PageFactory.resolve(driver, ShippingInfoPage.class);
-        SignInPage signInPage=PageFactory.resolve(driver, SignInPage.class);
+        ProductsPage productsPage= new ProductsPage(driver);
+        ProductPage productPage=new ProductPage(driver);
+        ReviewOrderPage reviewOrderPage=new ReviewOrderPage(driver);
+        ShippingInfoPage shippingInfoPage=new ShippingInfoPage(driver);
+        SignInPage signInPage=new SignInPage(driver);
         productsPage
                 .navigate();
 
