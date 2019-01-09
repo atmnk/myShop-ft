@@ -4,7 +4,7 @@ import com.vodqa.ft.pages.ReviewOrderPage;
 
 public class SalesTaxValidationStartegy implements ReviewOrderPage.ValidationStrategy {
     @Override
-    public ReviewOrderPage validate(ReviewOrderPage.ReviewOrderPageValidator validator, String price, String country) {
-        return validator.TaxPrice(String.format("%.2f", CalulationService.calculateSalesTax(Double.parseDouble(price),country)));
+    public void validate(ReviewOrderPage.ReviewOrderPageValidator validator, String price, String country) {
+        validator.TaxPrice(String.format("%.2f", CalulationService.calculateSalesTax(Double.parseDouble(price),country)));
     }
 }

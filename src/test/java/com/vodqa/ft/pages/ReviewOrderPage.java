@@ -72,6 +72,6 @@ public class ReviewOrderPage extends BasePage<ReviewOrderPage.ReviewOrderPageVal
     }
     @FunctionalInterface
     public interface ValidationStrategy {
-        public ReviewOrderPage validate(ReviewOrderPageValidator validator,String price,String country);
+        public void validate(ReviewOrderPageValidator validator,String price,String country);
     }
 }
