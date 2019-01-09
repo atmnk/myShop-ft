@@ -16,7 +16,7 @@ public class ShippingInfoPage extends BasePage{
         super(driver);
         shippingInfoPageMap=new ShippingInfoPageMap(driver);
     }
-    public ReviewOrderPage setShippingAndContinue(ShippingInfo shipping){
+    public void setShippingAndContinue(ShippingInfo shipping){
         ElementHelpers.selectSafly(shippingInfoPageMap.getCountry(),shipping.getCountry());
         ElementHelpers.setTextSafly(shippingInfoPageMap.getFirstName(),shipping.getFirstName());
         ElementHelpers.setTextSafly(shippingInfoPageMap.getLastName(),shipping.getLastName());
@@ -28,7 +28,6 @@ public class ShippingInfoPage extends BasePage{
         ElementHelpers.setTextSafly(shippingInfoPageMap.getFirstName(),shipping.getFirstName());
         ElementHelpers.setTextSafly(shippingInfoPageMap.getEmail(),shipping.getEmail());
         shippingInfoPageMap.getContinueButton().click();
-        return PageFactory.resolve(shippingInfoPageMap.driver,ReviewOrderPage.class);
     }
     class ShippingInfoPageMap{
         WebDriver driver;

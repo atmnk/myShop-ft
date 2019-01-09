@@ -18,18 +18,15 @@ public class ProductPage extends BasePage<ProductPage.ProductPageValidator> {
         productPageMap=new ProductPageMap(driver);
         this.validate=new ProductPageValidator();
     }
-    public ProductPage setSize(String size){
+    public void setSize(String size){
         productPageMap.getSize().selectByVisibleText(size);
-        return this;
     }
-    public ProductPage setColor(String color){
+    public void setColor(String color){
         productPageMap.getColor().selectByVisibleText(color);
-        return this;
     }
-    public SignInPage buy(){
+    public void buy(){
         ElementHelpers.waitForVisibilityOfElement(productPageMap.driver,productPageMap.getBuyButton());
         productPageMap.getBuyButton().click();
-        return PageFactory.resolve(productPageMap.driver,SignInPage.class);
     }
     class ProductPageMap {
         private By ddSize=By.id("size");
@@ -56,14 +53,12 @@ public class ProductPage extends BasePage<ProductPage.ProductPageValidator> {
         }
     }
     public class ProductPageValidator{
-        ProductPage productPage;
 
         public ProductPageValidator() {
         }
-        public ProductPage Price(String price){
+        public void Price(String price){
             ElementHelpers.waitForTextSetForElement(productPageMap.driver,productPageMap.getPriceLable());
             assertThat(productPageMap.getPriceLable().getText(),is(price));
-            return ProductPage.this;
         }
     }
 }

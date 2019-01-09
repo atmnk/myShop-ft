@@ -16,17 +16,14 @@ public class ProductsPage extends BasePage<ProductsPage.ProductsPageValidator> {
         productsPageMap=new ProductsPageMap(driver);
         this.validate=new ProductsPageValidator();
     }
-    public ProductsPage navigate(){
+    public void navigate(){
         productsPageMap.driver.navigate().to("http://vodqa.ml");
-        return this;
     }
-    public ProductPage clickFirstProduct(){
+    public void clickFirstProduct(){
         productsPageMap.getProducts().get(0).click();
-        return PageFactory.resolve(productsPageMap.driver,ProductPage.class);
     }
-    public ProductPage clickNthProduct(int n){
+    public void clickNthProduct(int n){
         productsPageMap.getProducts().get(n).click();
-        return PageFactory.resolve(productsPageMap.driver,ProductPage.class);
     }
     class ProductsPageMap {
         private By ddCategory=By.id("filter-category");
@@ -62,11 +59,10 @@ public class ProductsPage extends BasePage<ProductsPage.ProductsPageValidator> {
 
         }
 
-        public ProductsPage Categories(List<String> categories){
+        public void Categories(List<String> categories){
             for (WebElement el:productsPageMap.getCatagory().getOptions()){
                 assertThat(categories,hasItem(el.getText()));
             }
-            return ProductsPage.this;
         }
     }
 }

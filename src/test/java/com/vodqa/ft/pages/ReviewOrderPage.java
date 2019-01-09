@@ -15,9 +15,8 @@ public class ReviewOrderPage extends BasePage<ReviewOrderPage.ReviewOrderPageVal
         reviewOrderPageMap=new ReviewOrderPageMap(driver);
         validate=new ReviewOrderPageValidator();
     }
-    public ProductsPage placeOrder(){
+    public void placeOrder(){
         reviewOrderPageMap.getPlaceButton().click();
-        return PageFactory.resolve(reviewOrderPageMap.driver,ProductsPage.class);
     }
     class ReviewOrderPageMap{
         By bPlace=By.id("place");
@@ -50,31 +49,25 @@ public class ReviewOrderPage extends BasePage<ReviewOrderPage.ReviewOrderPageVal
         }
     }
     public class ReviewOrderPageValidator{
-        public ReviewOrderPage ItemPrice(String price){
+        public void ItemPrice(String price){
             ElementHelpers.waitForTextSetForElement(reviewOrderPageMap.driver,reviewOrderPageMap.getItemsPrice());
             assertThat(reviewOrderPageMap.getItemsPrice().getText(),is(price));
-            return ReviewOrderPage.this;
         }
-        public ReviewOrderPage ShippingPrice(String price){
+        public void ShippingPrice(String price){
             ElementHelpers.waitForTextSetForElement(reviewOrderPageMap.driver,reviewOrderPageMap.getShippingPrice());
             assertThat(reviewOrderPageMap.getShippingPrice().getText(),is(price));
-            return ReviewOrderPage.this;
-        }public ReviewOrderPage GiftPackingPrice(String price){
+        }public void GiftPackingPrice(String price){
             ElementHelpers.waitForTextSetForElement(reviewOrderPageMap.driver,reviewOrderPageMap.getGiftPackingPrice());
             assertThat(reviewOrderPageMap.getGiftPackingPrice().getText(),is(price));
-            return ReviewOrderPage.this;
-        }public ReviewOrderPage TotalBeforeTaxPrice(String price){
+        }public void TotalBeforeTaxPrice(String price){
             ElementHelpers.waitForTextSetForElement(reviewOrderPageMap.driver,reviewOrderPageMap.getTotalBeforeTaxPrice());
             assertThat(reviewOrderPageMap.getTotalBeforeTaxPrice().getText(),is(price));
-            return ReviewOrderPage.this;
-        }public ReviewOrderPage TaxPrice(String price){
+        }public void TaxPrice(String price){
             ElementHelpers.waitForTextSetForElement(reviewOrderPageMap.driver,reviewOrderPageMap.getTaxPrice());
             assertThat(reviewOrderPageMap.getTaxPrice().getText(),is(price));
-            return ReviewOrderPage.this;
-        }public ReviewOrderPage TotalPrice(String price){
+        }public void TotalPrice(String price){
             ElementHelpers.waitForTextSetForElement(reviewOrderPageMap.driver,reviewOrderPageMap.getTotalPrice());
             assertThat(reviewOrderPageMap.getTotalPrice().getText(),is(price));
-            return ReviewOrderPage.this;
         }
     }
     @FunctionalInterface

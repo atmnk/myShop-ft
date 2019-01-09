@@ -13,9 +13,8 @@ public class SignInPage extends BasePage{
         super(driver);
         signInPageMap=new SignInPageMap(driver);
     }
-    public ShippingInfoPage continueAsGuest(){
+    public void continueAsGuest(){
         signInPageMap.getContinueButton().click();
-        return PageFactory.resolve(signInPageMap.driver,ShippingInfoPage.class);
     }
     class SignInPageMap {
         private By bContinue=By.id("continue");
