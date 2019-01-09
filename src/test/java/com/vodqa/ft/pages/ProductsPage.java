@@ -17,7 +17,7 @@ public class ProductsPage extends BasePage<ProductsPage.ProductsPageValidator> {
         this.validate=new ProductsPageValidator();
     }
     public ProductsPage navigate(){
-        productsPageMap.driver.navigate().to("http://localhost:8000");
+        productsPageMap.driver.navigate().to("http://vodqa.ml");
         return this;
     }
     public ProductPage clickFirstProduct(){
