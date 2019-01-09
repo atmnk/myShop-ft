@@ -7,7 +7,7 @@ import com.vodqa.ft.strategy.VatTaxValidationStartegy;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-public class gitPurchaseTest {
+public class PurchaseTest {
 
     @Test
     public void firstTest(){
