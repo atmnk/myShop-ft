@@ -57,7 +57,7 @@ public class PurchaseTest {
         ShippingInfo shippingInfo=new ShippingInfo();
         shippingInfo.setLastName("Naik");
         shippingInfo.setFirstName("Atmaram");
-        shippingInfo.setCountry("China");
+        shippingInfo.setCountry("India");
         int item=0;
         String size="L";
         String color="Blue";
