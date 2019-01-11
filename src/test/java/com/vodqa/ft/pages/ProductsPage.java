@@ -1,7 +1,6 @@
 package com.vodqa.ft.pages;
 
 import com.vodqa.ft.helpers.ElementHelpers;
-import com.vodqa.ft.pages.factory.PageFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
