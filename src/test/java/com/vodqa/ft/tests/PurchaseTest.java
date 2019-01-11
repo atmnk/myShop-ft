@@ -22,7 +22,7 @@ public class PurchaseTest {
         int item=0;
         String size="M";
         String color="Green";
-        String price="5400";
+        String price="8757.84";
 
         ProductsPage productsPage= PageFactory.resolve(driver, ProductsPage.class);
         ProductPage productPage=PageFactory.resolve(driver, ProductPage.class);
@@ -61,7 +61,7 @@ public class PurchaseTest {
         int item=0;
         String size="L";
         String color="Blue";
-        String price="9600";
+        String price="13576.256";
 
         ProductsPage productsPage= PageFactory.resolve(driver, ProductsPage.class);
         ProductPage productPage=PageFactory.resolve(driver, ProductPage.class);
