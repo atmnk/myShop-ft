@@ -15,7 +15,7 @@ public class PurchaseTest {
         shippingInfo.setLastName("Naik");
         shippingInfo.setFirstName("Atmaram");
         shippingInfo.setCountry("China");
-        purchaseFacade.purchaseItem(0,"M","Green","5400",shippingInfo);
+        purchaseFacade.purchaseItem(0,"M","Green","8757.84",shippingInfo);
         driver.quit();
     }
     @Test
@@ -27,7 +27,7 @@ public class PurchaseTest {
         shippingInfo.setLastName("Naik");
         shippingInfo.setFirstName("Atmaram");
         shippingInfo.setCountry("India");
-        purchaseFacade.purchaseItem(0,"L","Blue","9600",shippingInfo);
+        purchaseFacade.purchaseItem(0,"L","Blue","13576.256",shippingInfo);
         driver.quit();
     }
 
