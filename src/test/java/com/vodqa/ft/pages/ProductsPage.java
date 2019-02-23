@@ -14,9 +14,7 @@ public class ProductsPage extends BasePage<ProductsPage.ProductsPageValidator> {
         super(driver);
         productsPageMap=new ProductsPageMap(driver);
         this.validate=new ProductsPageValidator();
-    }
-    public void navigate(){
-        productsPageMap.driver.navigate().to("http://vodqa.ml");
+        url="http://vodqa.ml";
     }
     public void clickFirstProduct(){
         productsPageMap.getProducts().get(0).click();
@@ -46,10 +44,10 @@ public class ProductsPage extends BasePage<ProductsPage.ProductsPageValidator> {
             return ElementHelpers.getDropDownSaflyBy(driver,ddBrand);
         }
         public WebElement getSearchText(){
-            return driver.findElement(txtSearchText);
+            return ElementHelpers.getWebElementSaflyBy(driver,txtSearchText);
         }
         public List<WebElement> getProducts(){
-            return driver.findElements(lstProducts);
+            return ElementHelpers.getWebElementsSaflyBy(driver,lstProducts);
         }
     }
     public class ProductsPageValidator{

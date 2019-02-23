@@ -1,5 +1,6 @@
 package com.vodqa.ft.tests;
 
+import com.vodqa.ft.helpers.DriverHelper;
 import com.vodqa.ft.model.ShippingInfo;
 import com.vodqa.ft.pages.*;
 import com.vodqa.ft.strategy.CalulationService;
@@ -13,7 +14,7 @@ public class PurchaseTest {
 
     @Test
     public void firstTest(){
-        WebDriver driver=new ChromeDriver();
+        WebDriver driver= DriverHelper.getNewChromeDriver();
         ShippingInfo shippingInfo=new ShippingInfo();
         shippingInfo.setLastName("Naik");
         shippingInfo.setFirstName("Atmaram");
@@ -52,7 +53,7 @@ public class PurchaseTest {
     @Test
     public void secondTest(){
 
-        WebDriver driver=new ChromeDriver();
+        WebDriver driver=DriverHelper.getNewChromeDriver();
         ShippingInfo shippingInfo=new ShippingInfo();
         shippingInfo.setLastName("Naik");
         shippingInfo.setFirstName("Atmaram");

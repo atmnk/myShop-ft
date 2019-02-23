@@ -31,20 +31,20 @@ public class ReviewOrderPage extends BasePage<ReviewOrderPage.ReviewOrderPageVal
             this.driver = driver;
         }
         public WebElement getPlaceButton(){
-            return driver.findElement(bPlace);
+            return ElementHelpers.getWebElementSaflyBy(driver,bPlace);
         }
         public WebElement getShippingPrice(){
-            return driver.findElement(lblShipping);
+            return ElementHelpers.getWebElementSaflyBy(driver,lblShipping);
         }public WebElement getItemsPrice(){
-            return driver.findElement(lblItems);
+            return ElementHelpers.getWebElementSaflyBy(driver,lblItems);
         }public WebElement getGiftPackingPrice(){
-            return driver.findElement(lblGiftPacking);
+            return ElementHelpers.getWebElementSaflyBy(driver,lblGiftPacking);
         }public WebElement getTotalBeforeTaxPrice(){
-            return driver.findElement(lblTotalBeforeTax);
+            return ElementHelpers.getWebElementSaflyBy(driver,lblTotalBeforeTax);
         }public WebElement getTaxPrice(){
-            return driver.findElement(lblTax);
+            return ElementHelpers.getWebElementSaflyBy(driver,lblTax);
         }public WebElement getTotalPrice(){
-            return driver.findElement(lblTotal);
+            return ElementHelpers.getWebElementSaflyBy(driver,lblTotal);
         }
     }
     public class ReviewOrderPageValidator{
