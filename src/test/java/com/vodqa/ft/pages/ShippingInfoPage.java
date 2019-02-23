@@ -50,24 +50,24 @@ public class ShippingInfoPage extends BasePage{
             return ElementHelpers.getDropDownSaflyBy(driver,ddCountry);
         }
         public WebElement getFirstName(){
-            return driver.findElement(txtFirstName);
+            return ElementHelpers.getWebElementSaflyBy(driver,txtFirstName);
         }
         public WebElement getLastName(){
-            return driver.findElement(txtLastName);
+            return ElementHelpers.getWebElementSaflyBy(driver,txtLastName);
         }public WebElement getStreet(){
-            return driver.findElement(txtStreet);
+            return ElementHelpers.getWebElementSaflyBy(driver,txtStreet);
         }public WebElement getCity(){
-            return driver.findElement(txtCity);
+            return ElementHelpers.getWebElementSaflyBy(driver,txtCity);
         }public WebElement getState(){
             return driver.findElement(txtState);
         }public WebElement getZip(){
-            return driver.findElement(txtZip);
+            return ElementHelpers.getWebElementSaflyBy(driver,txtZip);
         }public WebElement getPhone(){
-            return driver.findElement(txtPhone);
+            return ElementHelpers.getWebElementSaflyBy(driver,txtPhone);
         }public WebElement getEmail(){
-            return driver.findElement(txtEmail);
+            return ElementHelpers.getWebElementSaflyBy(driver,txtEmail);
         }public WebElement getContinueButton(){
-            return driver.findElement(bContinue);
+            return ElementHelpers.getWebElementSaflyBy(driver,bContinue);
         }
     }
 }

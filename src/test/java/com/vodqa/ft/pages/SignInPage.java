@@ -27,7 +27,7 @@ public class SignInPage extends BasePage{
 
 
         public WebElement getContinueButton(){
-            return driver.findElement(bContinue);
+            return ElementHelpers.getWebElementSaflyBy(driver,bContinue);
         }
     }
 }

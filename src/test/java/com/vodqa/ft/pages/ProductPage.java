@@ -49,10 +49,10 @@ public class ProductPage extends BasePage<ProductPage.ProductPageValidator> {
             return ElementHelpers.getDropDownSaflyBy(driver,ddColor);
         }
         public WebElement getBuyButton(){
-            return driver.findElement(bBuy);
+            return ElementHelpers.getWebElementSaflyBy(driver,bBuy);
         }
         public WebElement getPriceLable(){
-            return driver.findElement(lblPrice);
+            return ElementHelpers.getWebElementSaflyBy(driver,lblPrice);
         }
     }
     public class ProductPageValidator{
