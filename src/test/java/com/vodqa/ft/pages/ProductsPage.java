@@ -17,6 +17,11 @@ public class ProductsPage extends BasePage<ProductsPage.ProductsPageValidator> {
         this.validate=new ProductsPageValidator();
         url="http://vodqa.ml";
     }
+    @Override
+    public ProductsPage navigate(){
+        super.navigate();
+        return PageFactory.resolve(productsPageMap.driver,ProductsPage.class);
+    }
     public ProductPage clickFirstProduct(){
         productsPageMap.getProducts().get(0).click();
         return PageFactory.resolve(productsPageMap.driver,ProductPage.class);

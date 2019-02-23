@@ -6,8 +6,9 @@ public class BasePage<T> {
     public T validate;
     String url;
     WebDriver driver;
-    public void navigate(){
+    public BasePage navigate(){
         driver.navigate().to(url);
+        return null;
     }
     public BasePage(WebDriver driver) {
         this.driver=driver;
