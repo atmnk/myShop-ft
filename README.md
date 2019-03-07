@@ -35,7 +35,7 @@ Create C:\webdriver folder
 
 Copy file chromedriver.exe from chromedriver_win32 (unzipped folder) to C:\webdriver folder
 
-append to Path variable ';C:\webdriver\bin'
+append to Path variable ';C:\webdriver'
 
 #### Intellij idea
 `https://www.jetbrains.com/idea/download/#section=windows`
@@ -203,11 +203,11 @@ Download Gradle zip from https://gradle.org/releases/ (download link https://gra
 
 Unzip gradle-5.2.1-bin.zip
 
-Create \opt\gradle directory
-Copy contents of gradle-5.2.1-bin\gradle-5.2.1 to \opt\gradle
+Create /opt/gradle directory
+Copy contents of gradle-5.2.1-bin/gradle-5.2.1 to /opt/gradle
 
 In your ~/.profile file add line at end
-PATH=”$PATH:\opt\gradle\bin”
+PATH=”$PATH:/opt/gradle/bin”
 
 
 #### Chromedriver
@@ -215,12 +215,12 @@ Download chromedriver from http://chromedriver.chromium.org/downloads suitable f
 
 Unzip chromedriver_linux64.zip
 
-Create \opt\webdriver directory
+Create /opt/webdriver directory
 
 Copy file chromedriver from chromedriver_linux64 (unzipped folder) to \opt\webdriver folder
 
 In your ~/.profile file add line
-PATH=”$PATH:\opt\webdriver”
+PATH=”$PATH:/opt/webdriver”
 
 
 #### Intellij idea
