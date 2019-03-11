@@ -4,6 +4,7 @@ import com.vodqa.ft.model.ShippingInfo;
 import com.vodqa.ft.pages.*;
 import com.vodqa.ft.pages.factory.PageFactory;
 import com.vodqa.ft.strategy.OtherValidationStrategy;
+import com.vodqa.ft.strategy.ValidationStrategy;
 import org.openqa.selenium.WebDriver;
 
 import java.util.ArrayList;
@@ -17,9 +18,9 @@ public class PurchaseFacade {
     ReviewOrderPage reviewOrderPage;
     ShippingInfoPage  shippingInfoPage;
     SignInPage signInPage;
-    List<ReviewOrderPage.ValidationStrategy> validationStrategies=new ArrayList<>();
+    List<ValidationStrategy> validationStrategies=new ArrayList<>();
 
-    public PurchaseFacade(WebDriver driver, ReviewOrderPage.ValidationStrategy validationStrategy) {
+    public PurchaseFacade(WebDriver driver, ValidationStrategy validationStrategy) {
         this.driver = driver;
         productsPage=PageFactory.resolve(driver,ProductsPage.class);
         productPage=PageFactory.resolve(driver,ProductPage.class);
@@ -34,17 +35,17 @@ public class PurchaseFacade {
                 productsPage
                 .navigate();
 
-                productsPage.validate.Categories(Arrays.asList("All","Food","Fruits","Electronics","Clothes Men","Clothes Women","Drinks","Groceries"));
+                productsPage.validateCategories(Arrays.asList("All","Food","Fruits","Electronics","Clothes Men","Clothes Women","Drinks","Groceries"));
                 productsPage.clickNthProduct(item);
                 productPage.setSize(size);
                 productPage.setColor(color);
-                productPage.validate.Price(price);
+                productPage.validatePrice(price);
                 productPage.buy();
                 signInPage.continueAsGuest();
                 shippingInfoPage.setShippingAndContinue(shippingInfo);
 
-        for (ReviewOrderPage.ValidationStrategy strategy:validationStrategies) {
-            strategy.validate(reviewOrderPage.validate, price, shippingInfo.getCountry());
+        for (ValidationStrategy strategy:validationStrategies) {
+            strategy.validate(reviewOrderPage, price, shippingInfo.getCountry());
         }
         reviewOrderPage.placeOrder();
     }
