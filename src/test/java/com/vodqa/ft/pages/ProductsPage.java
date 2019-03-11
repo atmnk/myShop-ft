@@ -1,7 +1,6 @@
 package com.vodqa.ft.pages;
 
 import com.vodqa.ft.helpers.ElementHelpers;
-import com.vodqa.ft.pages.factory.PageFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,58 +8,47 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
-public class ProductsPage extends BasePage<ProductsPage.ProductsPageValidator> {
-    protected ProductsPageMap productsPageMap;
+public class ProductsPage extends BasePage {
     public ProductsPage(WebDriver driver) {
         super(driver);
-        productsPageMap=new ProductsPageMap(driver);
-        this.validate=new ProductsPageValidator();
         url="http://vodqa.ml";
     }
+
+    //Locators
+    private By ddCategory=By.id("filter-category");
+    private By ddSubCategory=By.id("filter-subCategory");
+    private By ddBrand=By.id("filter-brand");
+    private By txtSearchText=By.id("filter-text");
+    private By lstProducts=By.cssSelector(".product-card-wrap");
+
+    //Elements
+    public Select getCatagory(){
+        return ElementHelpers.getDropDownSaflyBy(driver,ddCategory);
+    }
+    public Select getSubCatagory(){
+        return ElementHelpers.getDropDownSaflyBy(driver,ddSubCategory);
+    }
+    public Select getBrand(){
+        return ElementHelpers.getDropDownSaflyBy(driver,ddBrand);
+    }
+    public WebElement getSearchText(){
+        return ElementHelpers.getWebElementSaflyBy(driver,txtSearchText);
+    }
+    public List<WebElement> getProducts(){
+        return ElementHelpers.getWebElementsSaflyBy(driver,lstProducts);
+    }
+
     public void clickFirstProduct(){
-        productsPageMap.getProducts().get(0).click();
+        getProducts().get(0).click();
     }
     public void clickNthProduct(int n){
-        productsPageMap.getProducts().get(n).click();
+        getProducts().get(n).click();
     }
-    class ProductsPageMap {
-        private By ddCategory=By.id("filter-category");
-        private By ddSubCategory=By.id("filter-subCategory");
-        private By ddBrand=By.id("filter-brand");
-        private By txtSearchText=By.id("filter-text");
-        private By lstProducts=By.cssSelector(".product-card-wrap");
-        private WebDriver driver;
 
-        public ProductsPageMap(WebDriver driver) {
-            this.driver=driver;
-        }
-
-        public Select getCatagory(){
-            return ElementHelpers.getDropDownSaflyBy(driver,ddCategory);
-        }
-        public Select getSubCatagory(){
-            return ElementHelpers.getDropDownSaflyBy(driver,ddSubCategory);
-        }
-        public Select getBrand(){
-            return ElementHelpers.getDropDownSaflyBy(driver,ddBrand);
-        }
-        public WebElement getSearchText(){
-            return ElementHelpers.getWebElementSaflyBy(driver,txtSearchText);
-        }
-        public List<WebElement> getProducts(){
-            return ElementHelpers.getWebElementsSaflyBy(driver,lstProducts);
-        }
-    }
-    public class ProductsPageValidator{
-
-        public ProductsPageValidator() {
-
-        }
-
-        public void Categories(List<String> categories){
-            for (WebElement el:productsPageMap.getCatagory().getOptions()){
-                assertThat(categories,hasItem(el.getText()));
-            }
+    //Validations
+    public void validateCategories(List<String> categories){
+        for (WebElement el:getCatagory().getOptions()){
+            assertThat(categories,hasItem(el.getText()));
         }
     }
 }
