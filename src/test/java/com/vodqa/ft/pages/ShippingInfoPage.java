@@ -18,12 +18,6 @@ public class ShippingInfoPage extends BasePage{
     By ddCountry=By.id("country");
     By txtFirstName=By.cssSelector("input[name='firstName']");
     By txtLastName=By.cssSelector("input[name='lastName']");
-    By txtStreet=By.cssSelector("input[name='street']");
-    By txtCity=By.cssSelector("input[name='city']");
-    By txtState=By.cssSelector("input[name='state']");
-    By txtZip=By.cssSelector("input[name='zip']");
-    By txtPhone=By.cssSelector("input[name='phone']");
-    By txtEmail=By.cssSelector("input[name='email']");
     By bContinue=By.id("continueButton");
 
     //Elements
@@ -35,18 +29,6 @@ public class ShippingInfoPage extends BasePage{
     }
     public WebElement getLastName(){
         return ElementHelpers.getWebElementSaflyBy(driver,txtLastName);
-    }public WebElement getStreet(){
-        return ElementHelpers.getWebElementSaflyBy(driver,txtStreet);
-    }public WebElement getCity(){
-        return ElementHelpers.getWebElementSaflyBy(driver,txtCity);
-    }public WebElement getState(){
-        return driver.findElement(txtState);
-    }public WebElement getZip(){
-        return ElementHelpers.getWebElementSaflyBy(driver,txtZip);
-    }public WebElement getPhone(){
-        return ElementHelpers.getWebElementSaflyBy(driver,txtPhone);
-    }public WebElement getEmail(){
-        return ElementHelpers.getWebElementSaflyBy(driver,txtEmail);
     }public WebElement getContinueButton(){
         return ElementHelpers.getWebElementSaflyBy(driver,bContinue);
     }
