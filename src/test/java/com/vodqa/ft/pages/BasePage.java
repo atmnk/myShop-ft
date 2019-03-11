@@ -2,8 +2,7 @@ package com.vodqa.ft.pages;
 
 import org.openqa.selenium.WebDriver;
 
-public class BasePage<T> {
-    public T validate;
+public class BasePage {
     String url;
     WebDriver driver;
     public void navigate(){
