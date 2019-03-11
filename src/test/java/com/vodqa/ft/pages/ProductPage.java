@@ -8,55 +8,48 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import org.openqa.selenium.support.ui.Select;
 
 
-public class ProductPage extends BasePage<ProductPage.ProductPageValidator> {
-    protected ProductPageMap productPageMap;
-
+public class ProductPage extends BasePage {
     public ProductPage(WebDriver driver) {
         super(driver);
-        productPageMap=new ProductPageMap(driver);
-        this.validate=new ProductPageValidator();
     }
+
+    //Locators
+    private By ddSize=By.id("size");
+    private By ddColor=By.id("color");
+    private By lblPrice=By.id("price");
+    private By bBuy=By.id("buyButton");
+
+    //Page Objects
+    public Select getSize(){
+        return ElementHelpers.getDropDownSaflyBy(driver,ddSize);
+    }
+    public Select getColor(){
+        return ElementHelpers.getDropDownSaflyBy(driver,ddColor);
+    }
+    public WebElement getBuyButton(){
+        return ElementHelpers.getWebElementSaflyBy(driver,bBuy);
+    }
+    public WebElement getPriceLable(){
+        return ElementHelpers.getWebElementSaflyBy(driver,lblPrice);
+    }
+
+    //Interactions
     public void setSize(String size){
-        productPageMap.getSize().selectByVisibleText(size);
+        getSize().selectByVisibleText(size);
     }
     public void setColor(String color){
-        productPageMap.getColor().selectByVisibleText(color);
+        getColor().selectByVisibleText(color);
     }
+
     public void buy(){
-        ElementHelpers.waitForVisibilityOfElement(productPageMap.driver,productPageMap.getBuyButton());
-        productPageMap.getBuyButton().click();
+        ElementHelpers.waitForVisibilityOfElement(driver,getBuyButton());
+        getBuyButton().click();
     }
-    class ProductPageMap {
-        private By ddSize=By.id("size");
-        private By ddColor=By.id("color");
-        private By lblPrice=By.id("price");
-        private By bBuy=By.id("buyButton");
-        private WebDriver driver;
 
-        public ProductPageMap(WebDriver driver) {
-            this.driver=driver;
-        }
-
-        public Select getSize(){
-            return ElementHelpers.getDropDownSaflyBy(driver,ddSize);
-        }
-        public Select getColor(){
-            return ElementHelpers.getDropDownSaflyBy(driver,ddColor);
-        }
-        public WebElement getBuyButton(){
-            return ElementHelpers.getWebElementSaflyBy(driver,bBuy);
-        }
-        public WebElement getPriceLable(){
-            return ElementHelpers.getWebElementSaflyBy(driver,lblPrice);
-        }
+    //Validations
+    public void validatePrice(String price){
+        ElementHelpers.waitForTextSetForElement(driver,getPriceLable());
+        assertThat(getPriceLable().getText(),is(price));
     }
-    public class ProductPageValidator{
 
-        public ProductPageValidator() {
-        }
-        public void Price(String price){
-            ElementHelpers.waitForTextSetForElement(productPageMap.driver,productPageMap.getPriceLable());
-            assertThat(productPageMap.getPriceLable().getText(),is(price));
-        }
-    }
 }
