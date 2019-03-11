@@ -32,21 +32,21 @@ public class PurchaseTest {
         productsPage
                 .navigate();
 
-        productsPage.validate.Categories(Arrays.asList("All","Food","Fruits","Electronics","Clothes Men","Clothes Women","Drinks","Groceries"));
+        productsPage.validateCategories(Arrays.asList("All","Food","Fruits","Electronics","Clothes Men","Clothes Women","Drinks","Groceries"));
         productsPage.clickNthProduct(item);
         productPage.setSize(size);
         productPage.setColor(color);
-        productPage.validate.Price(price);
+        productPage.validatePrice(price);
         productPage.buy();
         signInPage.continueAsGuest();
         shippingInfoPage.setShippingAndContinue(shippingInfo);
-        reviewOrderPage.validate.ItemPrice(String.format("%.2f",Double.parseDouble(price)));
-        reviewOrderPage.validate.GiftPackingPrice(String.format("%.2f", CalulationService.calculateGift(Double.parseDouble(price))));
-        reviewOrderPage.validate.ShippingPrice(String.format("%.2f", CalulationService.calculateShipping(Double.parseDouble(price))));
+        reviewOrderPage.validateItemPrice(String.format("%.2f",Double.parseDouble(price)));
+        reviewOrderPage.validateGiftPackingPrice(String.format("%.2f", CalulationService.calculateGift(Double.parseDouble(price))));
+        reviewOrderPage.validateShippingPrice(String.format("%.2f", CalulationService.calculateShipping(Double.parseDouble(price))));
         if(shippingInfo.getCountry().equals("India")){
-            reviewOrderPage.validate.TaxPrice(String.format("%.2f", CalulationService.calculateVatTax(Double.parseDouble(price),shippingInfo.getCountry())));
+            reviewOrderPage.validateTaxPrice(String.format("%.2f", CalulationService.calculateVatTax(Double.parseDouble(price),shippingInfo.getCountry())));
         } else{
-            reviewOrderPage.validate.TaxPrice(String.format("%.2f", CalulationService.calculateSalesTax(Double.parseDouble(price),shippingInfo.getCountry())));
+            reviewOrderPage.validateTaxPrice(String.format("%.2f", CalulationService.calculateSalesTax(Double.parseDouble(price),shippingInfo.getCountry())));
         }
         driver.quit();
     }
@@ -71,21 +71,21 @@ public class PurchaseTest {
         productsPage
                 .navigate();
 
-        productsPage.validate.Categories(Arrays.asList("All","Food","Fruits","Electronics","Clothes Men","Clothes Women","Drinks","Groceries"));
+        productsPage.validateCategories(Arrays.asList("All","Food","Fruits","Electronics","Clothes Men","Clothes Women","Drinks","Groceries"));
         productsPage.clickNthProduct(item);
         productPage.setSize(size);
         productPage.setColor(color);
-        productPage.validate.Price(price);
+        productPage.validatePrice(price);
         productPage.buy();
         signInPage.continueAsGuest();
         shippingInfoPage.setShippingAndContinue(shippingInfo);
-        reviewOrderPage.validate.ItemPrice(String.format("%.2f",Double.parseDouble(price)));
-        reviewOrderPage.validate.GiftPackingPrice(String.format("%.2f", CalulationService.calculateGift(Double.parseDouble(price))));
-        reviewOrderPage.validate.ShippingPrice(String.format("%.2f", CalulationService.calculateShipping(Double.parseDouble(price))));
+        reviewOrderPage.validateItemPrice(String.format("%.2f",Double.parseDouble(price)));
+        reviewOrderPage.validateGiftPackingPrice(String.format("%.2f", CalulationService.calculateGift(Double.parseDouble(price))));
+        reviewOrderPage.validateShippingPrice(String.format("%.2f", CalulationService.calculateShipping(Double.parseDouble(price))));
         if(shippingInfo.getCountry().equals("India")){
-            reviewOrderPage.validate.TaxPrice(String.format("%.2f", CalulationService.calculateVatTax(Double.parseDouble(price),shippingInfo.getCountry())));
+            reviewOrderPage.validateTaxPrice(String.format("%.2f", CalulationService.calculateVatTax(Double.parseDouble(price),shippingInfo.getCountry())));
         } else{
-            reviewOrderPage.validate.TaxPrice(String.format("%.2f", CalulationService.calculateSalesTax(Double.parseDouble(price),shippingInfo.getCountry())));
+            reviewOrderPage.validateTaxPrice(String.format("%.2f", CalulationService.calculateSalesTax(Double.parseDouble(price),shippingInfo.getCountry())));
         }
         driver.quit();
     }
