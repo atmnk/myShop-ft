@@ -1,9 +1,9 @@
 package com.vodqa.ft.model;
 
 public class ShippingInfo {
-    String country=null;
-    String firstName=null;
-    String lastName=null;
+    String country = null;
+    String firstName = null;
+    String lastName = null;
 
     public ShippingInfo() {
     }

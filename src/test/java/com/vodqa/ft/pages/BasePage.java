@@ -5,10 +5,12 @@ import org.openqa.selenium.WebDriver;
 public class BasePage {
     String url;
     WebDriver driver;
-    public void navigate(){
+
+    public void navigate() {
         driver.navigate().to(url);
     }
+
     public BasePage(WebDriver driver) {
-        this.driver=driver;
+        this.driver = driver;
     }
 }
