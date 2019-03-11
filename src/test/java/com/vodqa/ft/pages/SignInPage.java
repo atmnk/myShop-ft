@@ -5,29 +5,24 @@ import com.vodqa.ft.pages.factory.PageFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 
-public class SignInPage extends BasePage{
-    private SignInPageMap signInPageMap;
+public class SignInPage extends BasePage {
     public SignInPage(WebDriver driver) {
         super(driver);
-        signInPageMap=new SignInPageMap(driver);
     }
+
+    //Locators
+    private By bContinue=By.id("continue");
+
+    //Elements
+    public WebElement getContinueButton(){
+        return ElementHelpers.getWebElementSaflyBy(driver,bContinue);
+    }
+
+    //Interactions
     public ShippingInfoPage continueAsGuest(){
-        signInPageMap.getContinueButton().click();
-        return PageFactory.resolve(signInPageMap.driver,ShippingInfoPage.class);
+        getContinueButton().click();
+        return PageFactory.resolve(driver,ShippingInfoPage.class);
     }
-    class SignInPageMap {
-        private By bContinue=By.id("continue");
-        private WebDriver driver;
 
-        public SignInPageMap(WebDriver driver) {
-            this.driver=driver;
-        }
-
-
-        public WebElement getContinueButton(){
-            return ElementHelpers.getWebElementSaflyBy(driver,bContinue);
-        }
-    }
 }

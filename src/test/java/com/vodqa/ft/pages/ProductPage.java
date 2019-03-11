@@ -5,65 +5,58 @@ import com.vodqa.ft.pages.factory.PageFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import static org.hamcrest.CoreMatchers.*;
-import static org.hamcrest.MatcherAssert.assertThat;
 import org.openqa.selenium.support.ui.Select;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ProductPage extends BasePage<ProductPage.ProductPageValidator> {
-    protected ProductPageMap productPageMap;
 
+public class ProductPage extends BasePage {
     public ProductPage(WebDriver driver) {
         super(driver);
-        productPageMap=new ProductPageMap(driver);
-        this.validate=new ProductPageValidator();
     }
+
+    //Locators
+    private By ddSize=By.id("size");
+    private By ddColor=By.id("color");
+    private By lblPrice=By.id("price");
+    private By bBuy=By.id("buyButton");
+
+    //Page Objects
+    public Select getSize(){
+        return ElementHelpers.getDropDownSaflyBy(driver,ddSize);
+    }
+    public Select getColor(){
+        return ElementHelpers.getDropDownSaflyBy(driver,ddColor);
+    }
+    public WebElement getBuyButton(){
+        return ElementHelpers.getWebElementSaflyBy(driver,bBuy);
+    }
+    public WebElement getPriceLable(){
+        return ElementHelpers.getWebElementSaflyBy(driver,lblPrice);
+    }
+
+    //Interactions
     public ProductPage setSize(String size){
-        productPageMap.getSize().selectByVisibleText(size);
+        getSize().selectByVisibleText(size);
         return this;
     }
     public ProductPage setColor(String color){
-        productPageMap.getColor().selectByVisibleText(color);
+        getColor().selectByVisibleText(color);
         return this;
     }
+
     public SignInPage buy(){
-        ElementHelpers.waitForVisibilityOfElement(productPageMap.driver,productPageMap.getBuyButton());
-        productPageMap.getBuyButton().click();
-        return PageFactory.resolve(productPageMap.driver,SignInPage.class);
+        ElementHelpers.waitForVisibilityOfElement(driver,getBuyButton());
+        getBuyButton().click();
+        return PageFactory.resolve(driver,SignInPage.class);
     }
-    class ProductPageMap {
-        private By ddSize=By.id("size");
-        private By ddColor=By.id("color");
-        private By lblPrice=By.id("price");
-        private By bBuy=By.id("buyButton");
-        private WebDriver driver;
 
-        public ProductPageMap(WebDriver driver) {
-            this.driver=driver;
-        }
-
-        public Select getSize(){
-            return ElementHelpers.getDropDownSaflyBy(driver,ddSize);
-        }
-        public Select getColor(){
-            return ElementHelpers.getDropDownSaflyBy(driver,ddColor);
-        }
-        public WebElement getBuyButton(){
-            return ElementHelpers.getWebElementSaflyBy(driver,bBuy);
-        }
-        public WebElement getPriceLable(){
-            return ElementHelpers.getWebElementSaflyBy(driver,lblPrice);
-        }
+    //Validations
+    public ProductPage validatePrice(String price){
+        ElementHelpers.waitForTextSetForElement(driver,getPriceLable());
+        assertThat(getPriceLable().getText(),is(price));
+        return this;
     }
-    public class ProductPageValidator{
-        ProductPage productPage;
 
-        public ProductPageValidator() {
-        }
-        public ProductPage Price(String price){
-            ElementHelpers.waitForTextSetForElement(productPageMap.driver,productPageMap.getPriceLable());
-            assertThat(productPageMap.getPriceLable().getText(),is(price));
-            return ProductPage.this;
-        }
-    }
 }
