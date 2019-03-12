@@ -13,7 +13,6 @@ public class PurchaseFacade {
     ProductPage productPage;
     ReviewOrderPage reviewOrderPage;
     ShippingInfoPage  shippingInfoPage;
-    SignInPage signInPage;
 
     public PurchaseFacade(WebDriver driver) {
         this.driver = driver;
@@ -21,7 +20,6 @@ public class PurchaseFacade {
         productPage=PageFactory.resolve(driver,ProductPage.class);
         reviewOrderPage=PageFactory.resolve(driver,ReviewOrderPage.class);
         shippingInfoPage=PageFactory.resolve(driver,ShippingInfoPage.class);
-        signInPage=PageFactory.resolve(driver,SignInPage.class);
     }
 
     public void purchaseItem(int item,String size,String color,String price, ShippingInfo shippingInfo){
@@ -34,7 +32,6 @@ public class PurchaseFacade {
                 productPage.setColor(color);
                 productPage.validatePrice(price);
                 productPage.buy();
-                signInPage.continueAsGuest();
                 shippingInfoPage.setShippingAndContinue(shippingInfo);
                 reviewOrderPage.validateItemPrice(String.format("%.2f",Double.parseDouble(price)));
                 reviewOrderPage.validateGiftPackingPrice(String.format("%.2f", CalulationService.calculateGift(Double.parseDouble(price))));
