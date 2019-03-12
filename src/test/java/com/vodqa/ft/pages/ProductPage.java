@@ -22,7 +22,7 @@ public class ProductPage extends BasePage {
     private By lblPrice = By.id("price");
     private By bBuy = By.id("buyButton");
 
-    //Page Objects
+    //Elements
     public Select getSize() {
         return ElementHelpers.getDropDownSaflyBy(driver, ddSize);
     }

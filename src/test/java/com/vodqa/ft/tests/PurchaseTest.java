@@ -28,7 +28,6 @@ public class PurchaseTest {
         ProductPage productPage = new ProductPage(driver);
         ReviewOrderPage reviewOrderPage = new ReviewOrderPage(driver);
         ShippingInfoPage shippingInfoPage = new ShippingInfoPage(driver);
-        SignInPage signInPage = new SignInPage(driver);
         productsPage
                 .navigate();
 
@@ -38,7 +37,6 @@ public class PurchaseTest {
         productPage.setColor(color);
         productPage.validatePrice(price);
         productPage.buy();
-        signInPage.continueAsGuest();
         shippingInfoPage.setShippingAndContinue(shippingInfo);
         reviewOrderPage.validateItemPrice(String.format("%.2f", Double.parseDouble(price)));
         reviewOrderPage.validateGiftPackingPrice(String.format("%.2f", CalulationService.calculateGift(Double.parseDouble(price))));
@@ -68,7 +66,6 @@ public class PurchaseTest {
         ProductPage productPage = new ProductPage(driver);
         ReviewOrderPage reviewOrderPage = new ReviewOrderPage(driver);
         ShippingInfoPage shippingInfoPage = new ShippingInfoPage(driver);
-        SignInPage signInPage = new SignInPage(driver);
         productsPage
                 .navigate();
 
@@ -78,7 +75,6 @@ public class PurchaseTest {
         productPage.setColor(color);
         productPage.validatePrice(price);
         productPage.buy();
-        signInPage.continueAsGuest();
         shippingInfoPage.setShippingAndContinue(shippingInfo);
         reviewOrderPage.validateItemPrice(String.format("%.2f", Double.parseDouble(price)));
         reviewOrderPage.validateGiftPackingPrice(String.format("%.2f", CalulationService.calculateGift(Double.parseDouble(price))));
