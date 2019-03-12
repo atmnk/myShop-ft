@@ -4,10 +4,8 @@ import com.vodqa.ft.helpers.ElementHelpers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
-
 import org.openqa.selenium.support.ui.Select;
 
 
@@ -35,7 +33,7 @@ public class ProductPage extends BasePage {
         return ElementHelpers.getWebElementSaflyBy(driver, bBuy);
     }
 
-    public WebElement getPriceLable() {
+    public WebElement getPriceLabel() {
         return ElementHelpers.getWebElementSaflyBy(driver, lblPrice);
     }
 
@@ -55,8 +53,8 @@ public class ProductPage extends BasePage {
 
     //Validations
     public void validatePrice(String price) {
-        ElementHelpers.waitForTextSetForElement(driver, getPriceLable());
-        assertThat(getPriceLable().getText(), is(price));
+        ElementHelpers.waitForTextSetForElement(driver, getPriceLabel());
+        assertThat(getPriceLabel().getText(), is(price));
     }
 
 }
