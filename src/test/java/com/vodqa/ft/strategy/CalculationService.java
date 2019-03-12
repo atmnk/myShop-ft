@@ -1,6 +1,6 @@
 package com.vodqa.ft.strategy;
 
-public class CalulationService {
+public class CalculationService {
     public static double calculateShipping(double price){
         return 4.05;
     }
