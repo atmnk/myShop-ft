@@ -29,7 +29,7 @@ public class ProductPage extends BasePage {
     public WebElement getBuyButton(){
         return ElementHelpers.getWebElementSaflyBy(driver,bBuy);
     }
-    public WebElement getPriceLable(){
+    public WebElement getPriceLabel(){
         return ElementHelpers.getWebElementSaflyBy(driver,lblPrice);
     }
 
@@ -48,8 +48,8 @@ public class ProductPage extends BasePage {
 
     //Validations
     public void validatePrice(String price){
-        ElementHelpers.waitForTextSetForElement(driver,getPriceLable());
-        assertThat(getPriceLable().getText(),is(price));
+        ElementHelpers.waitForTextSetForElement(driver, getPriceLabel());
+        assertThat(getPriceLabel().getText(),is(price));
     }
 
 }
