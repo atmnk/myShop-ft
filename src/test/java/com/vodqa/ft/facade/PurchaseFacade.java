@@ -17,7 +17,6 @@ public class PurchaseFacade {
     ProductPage productPage;
     ReviewOrderPage reviewOrderPage;
     ShippingInfoPage  shippingInfoPage;
-    SignInPage signInPage;
     List<ValidationStrategy> validationStrategies=new ArrayList<>();
 
     public PurchaseFacade(WebDriver driver, ValidationStrategy validationStrategy) {
@@ -26,7 +25,6 @@ public class PurchaseFacade {
         productPage=PageFactory.resolve(driver,ProductPage.class);
         reviewOrderPage=PageFactory.resolve(driver,ReviewOrderPage.class);
         shippingInfoPage=PageFactory.resolve(driver,ShippingInfoPage.class);
-        signInPage=PageFactory.resolve(driver,SignInPage.class);
         this.validationStrategies.add(new OtherValidationStrategy());
         this.validationStrategies.add(validationStrategy);
     }
@@ -41,7 +39,6 @@ public class PurchaseFacade {
                 productPage.setColor(color);
                 productPage.validatePrice(price);
                 productPage.buy();
-                signInPage.continueAsGuest();
                 shippingInfoPage.setShippingAndContinue(shippingInfo);
 
         for (ValidationStrategy strategy:validationStrategies) {
