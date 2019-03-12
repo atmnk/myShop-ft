@@ -29,7 +29,6 @@ public class PurchaseTest {
         ProductPage productPage=PageFactory.resolve(driver, ProductPage.class);
         ReviewOrderPage reviewOrderPage=PageFactory.resolve(driver, ReviewOrderPage.class);
         ShippingInfoPage shippingInfoPage=PageFactory.resolve(driver, ShippingInfoPage.class);
-        SignInPage signInPage=PageFactory.resolve(driver, SignInPage.class);
         productsPage
                 .navigate();
 
@@ -39,7 +38,6 @@ public class PurchaseTest {
         productPage.setColor(color);
         productPage.validatePrice(price);
         productPage.buy();
-        signInPage.continueAsGuest();
         shippingInfoPage.setShippingAndContinue(shippingInfo);
         reviewOrderPage.validateItemPrice(String.format("%.2f",Double.parseDouble(price)));
         reviewOrderPage.validateGiftPackingPrice(String.format("%.2f", CalulationService.calculateGift(Double.parseDouble(price))));
@@ -68,7 +66,6 @@ public class PurchaseTest {
         ProductPage productPage=PageFactory.resolve(driver, ProductPage.class);
         ReviewOrderPage reviewOrderPage=PageFactory.resolve(driver, ReviewOrderPage.class);
         ShippingInfoPage shippingInfoPage=PageFactory.resolve(driver, ShippingInfoPage.class);
-        SignInPage signInPage=PageFactory.resolve(driver, SignInPage.class);
         productsPage
                 .navigate();
 
@@ -78,7 +75,6 @@ public class PurchaseTest {
         productPage.setColor(color);
         productPage.validatePrice(price);
         productPage.buy();
-        signInPage.continueAsGuest();
         shippingInfoPage.setShippingAndContinue(shippingInfo);
         reviewOrderPage.validateItemPrice(String.format("%.2f",Double.parseDouble(price)));
         reviewOrderPage.validateGiftPackingPrice(String.format("%.2f", CalulationService.calculateGift(Double.parseDouble(price))));
