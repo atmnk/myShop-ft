@@ -25,10 +25,10 @@ public class ProductsPage extends BasePage {
     private By lstProducts=By.cssSelector(".product-card-wrap");
 
     //Elements
-    public Select getCatagory(){
+    public Select getCategory(){
         return ElementHelpers.getDropDownSaflyBy(driver,ddCategory);
     }
-    public Select getSubCatagory(){
+    public Select getSubCategory(){
         return ElementHelpers.getDropDownSaflyBy(driver,ddSubCategory);
     }
     public Select getBrand(){
@@ -50,7 +50,7 @@ public class ProductsPage extends BasePage {
 
     //Validations
     public void validateCategories(List<String> categories){
-        for (WebElement el:getCatagory().getOptions()){
+        for (WebElement el: getCategory().getOptions()){
             assertThat(categories,hasItem(el.getText()));
         }
     }

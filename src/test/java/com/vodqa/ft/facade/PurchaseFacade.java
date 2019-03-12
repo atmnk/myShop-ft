@@ -3,7 +3,7 @@ package com.vodqa.ft.facade;
 import com.vodqa.ft.model.ShippingInfo;
 import com.vodqa.ft.pages.*;
 import com.vodqa.ft.pages.factory.PageFactory;
-import com.vodqa.ft.strategy.CalulationService;
+import com.vodqa.ft.strategy.CalculationService;
 import org.openqa.selenium.WebDriver;
 import java.util.Arrays;
 
@@ -34,12 +34,12 @@ public class PurchaseFacade {
                 productPage.buy();
                 shippingInfoPage.setShippingAndContinue(shippingInfo);
                 reviewOrderPage.validateItemPrice(String.format("%.2f",Double.parseDouble(price)));
-                reviewOrderPage.validateGiftPackingPrice(String.format("%.2f", CalulationService.calculateGift(Double.parseDouble(price))));
-                reviewOrderPage.validateShippingPrice(String.format("%.2f", CalulationService.calculateShipping(Double.parseDouble(price))));
+                reviewOrderPage.validateGiftPackingPrice(String.format("%.2f", CalculationService.calculateGift(Double.parseDouble(price))));
+                reviewOrderPage.validateShippingPrice(String.format("%.2f", CalculationService.calculateShipping(Double.parseDouble(price))));
                 if(shippingInfo.getCountry().equals("India")){
-                    reviewOrderPage.validateTaxPrice(String.format("%.2f", CalulationService.calculateVatTax(Double.parseDouble(price),shippingInfo.getCountry())));
+                    reviewOrderPage.validateTaxPrice(String.format("%.2f", CalculationService.calculateVatTax(Double.parseDouble(price),shippingInfo.getCountry())));
                 } else{
-                    reviewOrderPage.validateTaxPrice(String.format("%.2f", CalulationService.calculateSalesTax(Double.parseDouble(price),shippingInfo.getCountry())));
+                    reviewOrderPage.validateTaxPrice(String.format("%.2f", CalculationService.calculateSalesTax(Double.parseDouble(price),shippingInfo.getCountry())));
                 }
 
         reviewOrderPage.placeOrder();
