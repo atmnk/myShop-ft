@@ -46,10 +46,10 @@ public class ProductPage extends BasePage {
         return this;
     }
 
-    public SignInPage buy(){
+    public ShippingInfoPage buy(){
         ElementHelpers.waitForVisibilityOfElement(driver,getBuyButton());
         getBuyButton().click();
-        return PageFactory.resolve(driver,SignInPage.class);
+        return PageFactory.resolve(driver,ShippingInfoPage.class);
     }
 
     //Validations

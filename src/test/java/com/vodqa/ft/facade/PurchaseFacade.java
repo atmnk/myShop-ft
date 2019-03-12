@@ -32,7 +32,6 @@ public class PurchaseFacade {
                 .setColor(color)
                 .validatePrice(price)
                 .buy()
-                .continueAsGuest()
                 .setShippingAndContinue(shippingInfo);
 
         for (ValidationStrategy strategy:validationStrategies) {
