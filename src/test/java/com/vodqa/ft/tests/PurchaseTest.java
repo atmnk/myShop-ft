@@ -3,8 +3,8 @@ package com.vodqa.ft.tests;
 import com.vodqa.ft.facade.PurchaseFacade;
 import com.vodqa.ft.helpers.DriverHelper;
 import com.vodqa.ft.model.ShippingInfo;
-import com.vodqa.ft.strategy.SalesTaxValidationStartegy;
-import com.vodqa.ft.strategy.VatTaxValidationStartegy;
+import com.vodqa.ft.strategy.SalesTaxValidationStrategy;
+import com.vodqa.ft.strategy.VatTaxValidationStrategy;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
@@ -13,7 +13,7 @@ public class PurchaseTest {
     @Test
     public void firstTest(){
         WebDriver driver= DriverHelper.getNewChromeDriver();
-        PurchaseFacade purchaseFacade=new PurchaseFacade(driver,new SalesTaxValidationStartegy());
+        PurchaseFacade purchaseFacade=new PurchaseFacade(driver,new SalesTaxValidationStrategy());
         ShippingInfo shippingInfo=new ShippingInfo();
         shippingInfo.setLastName("Naik");
         shippingInfo.setFirstName("Atmaram");
@@ -25,7 +25,7 @@ public class PurchaseTest {
     public void secondTest(){
 
         WebDriver driver= DriverHelper.getNewChromeDriver();
-        PurchaseFacade purchaseFacade=new PurchaseFacade(driver,new VatTaxValidationStartegy());
+        PurchaseFacade purchaseFacade=new PurchaseFacade(driver,new VatTaxValidationStrategy());
         ShippingInfo shippingInfo=new ShippingInfo();
         shippingInfo.setLastName("Naik");
         shippingInfo.setFirstName("Atmaram");
