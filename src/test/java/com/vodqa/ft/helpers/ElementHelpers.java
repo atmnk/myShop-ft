@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 
 public class ElementHelpers {
-    private static int TIMEOUT=30;
+    private static int TIMEOUT=180;
     public static WebElement getWebElementSaflyBy(WebDriver driver, By by){
         WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
         wait.until(
