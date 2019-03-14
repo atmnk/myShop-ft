@@ -13,7 +13,7 @@ public class DriverHelper {
     }
 
     private static void configDriver(WebDriver driver) {
-        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(180, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
     }
 }
