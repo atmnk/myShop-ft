@@ -3,3 +3,10 @@
 out/
 build/
 
+.DS_Store
+com.vodqa.com.vodqa.ft.iml
+com.vodqa.com.vodqa.ft.main.iml
+com.vodqa.com.vodqa.ft.test.iml
+com.vodqa.ft.iml
+com.vodqa.ft.ipr
+com.vodqa.ft.iws
