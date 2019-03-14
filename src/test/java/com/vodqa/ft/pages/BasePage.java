@@ -2,7 +2,7 @@ package com.vodqa.ft.pages;
 
 import org.openqa.selenium.WebDriver;
 
-public class BasePage {
+public abstract class BasePage {
     String url;
     WebDriver driver;
 
@@ -10,7 +10,7 @@ public class BasePage {
         driver.navigate().to(url);
     }
 
-    public BasePage(WebDriver driver) {
+    protected BasePage(WebDriver driver) {
         this.driver = driver;
     }
 }
